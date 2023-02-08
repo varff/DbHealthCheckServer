@@ -123,7 +123,6 @@ test/main.go
 /pkg/AccessDefault/
 /prometheus/
 /pkg/services/conf.env
-/configs/config.env
-/configs/elastic.env
 /es-data01/
-/configs/
+/configs/db.env
+/configs/mongo.env
