@@ -4,12 +4,14 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/jackc/pgx/v5"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"Server/internal/settings"
 
+	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -56,6 +58,8 @@ func NewRepository(dbSetting *settings.DBSetting) (*Repository, error) {
 	pass, err := settings.GetEnvDefault("MONGO_INITDB_ROOT_PASSWORD", "")
 	if err != nil {
 		return nil, err
+	}
+	if err == pgx.ErrNoRows {
 	}
 	credential := options.Credential{
 		Username: user,

@@ -25,8 +25,8 @@ func main() {
 	service := services.NewService(repository)
 	serv := healths.NewServ(service)
 	listener, err := net.Listen("tcp", ":9000")
-		log.Fatalf("did not connect: %s", err)
 	if err != nil {
+		log.Fatalf("did not connect: %s", err)
 	}
 
 	s := grpc.NewServer()
