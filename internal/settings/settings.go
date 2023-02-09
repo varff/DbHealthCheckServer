@@ -23,27 +23,27 @@ func NewDBSetting() (*DBSetting, error) {
 	if err != nil {
 		return nil, err
 	}
-	s.DBUser, err = GetEnvDefault("USERID", "user")
+	s.DBUser, err = GetEnvDefault("ID", "user")
 	if err != nil {
 		return s, err
 	}
-	s.DBPassword, err = GetEnvDefault("USERPASS", "secret")
+	s.DBPassword, err = GetEnvDefault("PASS", "secret")
 	if err != nil {
 		return s, err
 	}
-	s.DBPort, err = GetEnvDefault("USERPORT", "5432")
+	s.DBPort, err = GetEnvDefault("PORT", "5432")
 	if err != nil {
 		return s, err
 	}
-	s.DBName, err = GetEnvDefault("USERDB", "postgres")
+	s.DBName, err = GetEnvDefault("DB", "postgres")
 	if err != nil {
 		return s, err
 	}
-	s.DBHost, err = GetEnvDefault("USERHOSTNAME", "localhost")
+	s.DBHost, err = GetEnvDefault("SERVICE_HOSTNAME", "localhost")
 	if err != nil {
 		return s, err
 	}
-	s.SSLMode, err = GetEnvDefault("USERSSL", "false")
+	s.SSLMode, err = GetEnvDefault("SSL", "false")
 	if err != nil {
 		return s, err
 	}

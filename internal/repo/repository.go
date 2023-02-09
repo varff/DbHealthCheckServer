@@ -47,6 +47,9 @@ func NewRepository(dbSetting *settings.DBSetting) (*Repository, error) {
 	if err != nil {
 		return nil, err
 	}
+	if err == pgx.ErrNoRows {
+		return nil, err
+	}
 	err = godotenv.Load("configs/mongo.env")
 	if err != nil {
 		return nil, err
@@ -59,8 +62,7 @@ func NewRepository(dbSetting *settings.DBSetting) (*Repository, error) {
 	if err != nil {
 		return nil, err
 	}
-	if err == pgx.ErrNoRows {
-	}
+
 	credential := options.Credential{
 		Username: user,
 		Password: pass,
